@@ -1,0 +1,51 @@
+{% block header %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBlog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="https://kit.fontawesome.com/cb91b67637.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %}
+    <script>alert("{{message}}")</script>{% endif %}
+    {% endfor %}
+    {% endif %}
+    <div class="nav">
+        <div class="logo">
+            <h1>MyBlog</h1>
+        </div>
+        <div class="Account">
+            {% if user.is_authenticated %}
+            <h2>{{user.username}}</h2>
+            <button onclick="openmenu()" ><i class="fa-solid fa-bars-staggered" id="icon"></i></button>
+            <ul id="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="CreatePost">CreatePost</a></li>
+                <li><a href="allpost">Your Post</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+            {% else %}
+            <a href="Register"><i class="fa-solid fa-user"></i></a>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock header %}
+    {% block container %}{% endblock container %}
+
+    {% block footer %}
+    <div class="footer">
+    <h1>satish_kumar@2024 copyright</h1>
+    </div>
+</body>
+
+</html>
+{% endblock footer %}

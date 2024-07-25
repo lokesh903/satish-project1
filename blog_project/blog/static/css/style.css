@@ -1,0 +1,319 @@
+body{
+    overflow-x: hidden;
+}
+.nav{
+    height: 12vh;
+    width: 100%;
+    background-color:darkgray;
+    display: flex;
+    justify-content: space-between;
+}
+.nav .logo{
+    margin-left: 5%;
+}
+
+.nav .Account i{
+    font-size: 25px;
+    margin-top: 25px;
+    margin-right: 100px;
+    color: black;
+}
+
+.nav .Account h2{
+    color: black;
+    margin-right: 30px;
+}
+.nav .Account{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    margin-left: 200px;
+}
+.nav .Account button{
+    border: 0px;
+    outline: 0px;
+    background-color: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+.nav .Account button i{
+    margin-top: 10px;
+    text-align: center;
+}
+.nav .Account ul{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: #4c8eaf;
+    top: 11vh;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.nav .Account ul li{
+    list-style: none;
+    font-size: 20px;
+}
+.nav .Account ul li a{
+    text-decoration: none;
+    color: wheat;
+}
+/*==================Footer==============*/
+
+.footer{
+    width: 100%;
+    height: 10vh;
+    background-color: #4c3c3c;
+    text-align: center;
+}
+
+/*========================POST List========================*/
+
+.posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    grid-gap: 40px;
+}
+.posts .post{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.posts .post .image{
+    height: 200px;
+    overflow: hidden;
+}
+.posts .post .image img{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.posts .post .title{
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+}
+.posts .post .username{
+    padding: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+}
+.posts .post .comment{
+    display: flex;
+    justify-content: space-between;
+}
+.posts .post .comment button{
+    border: 0px;
+    outline: 0;
+    background-color: transparent;
+    font-size: 25px;
+}
+.posts .post .comment button a{
+    text-decoration: none;
+    color: #4c8eaf;
+}
+
+.posts .post .action{
+    display: flex;
+    justify-content: space-between;
+}
+.posts .post .action button{
+    border: 0px;
+    outline: 0;
+    background-color: transparent;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.posts .post .action button a{
+    text-decoration: none;
+    columns: rgb(84, 84, 193);
+}
+/*========================Registration Form==========================*/
+.registration_form{
+    height: 80vh;
+    width: 100%;
+    background-color: #ffff;
+}
+.registration{
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.registration h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registration form{
+    display: flex;
+    flex-direction: column;
+}
+.registration input{
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.registration input[type='submit']{
+    background-color: #4c8eaf;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    margin: 10px auto;
+}
+
+.login_btn{
+    display: flex;
+    justify-content: center;
+}
+.login_btn a{
+    text-decoration: none;
+    color: rgb(50, 9, 147);
+    margin:20px auto;
+}
+
+/*================Login====================*/
+
+.login{
+    height: 80vh;
+    width: 100%;
+    background-color: #ffff;
+}
+.loginForm{
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.loginForm h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.loginForm form{
+    display: flex;
+    flex-direction: column;
+}
+.loginForm input{
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.loginForm input[type='submit']{
+    background-color: #4c8eaf;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    margin: 10px auto;
+}
+
+/*============================= CreatePost Form ========================*/
+.createpost{
+    height: 80vh;
+    width: 100%;
+    background-color: #ffff;
+}
+.post{
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);    
+}
+
+.post .form-group{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.post label{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.post input[type='text'],
+.post input[type='file'],
+.post input[type='date'] {
+    width: 90%;
+    padding: 12px;
+}
+.post input[type='submit'] {
+    padding: 12px;
+    border-radius: 5px;
+    margin: 10px auto;
+    background-color: #4c8eaf;
+}
+
+/*====================Comments====================*/
+.comments{
+    width: 100%;
+    background-color: #ffff;
+}
+.comments h1{
+    font-size: 18px;
+    text-align: center;
+}
+.comments .comment{
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: #ccc;
+    text-align: center;
+}
+.comments .comment li{
+    list-style: none;
+    font-size: 18px;
+    padding: 20px;
+}
+
+/*==========================Add Comment=========================*/
+.comment{
+    width: 100%;
+    background-color: #ffff;
+}
+.comment .commentform{
+    max-width: 500px;
+    background-color: #ccc;
+    margin: 50px auto;
+}
+.comment .commentform h2{
+text-align: center;
+padding: 10px;
+}
+.comment .commentform .form-group{
+    display: block;
+    margin-bottom: 20px;
+}
+.comment .commentform input[type='text']{
+    width: 90%;
+    padding:12px;
+}
+.comment .commentform input[type='submit']{
+    width: 100px;
+    height: 40px;
+    background-color: #4c8eaf;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    position: relative;
+    margin: 20px auto;
+}

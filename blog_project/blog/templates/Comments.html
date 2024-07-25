@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="comments">
+    <h1>All Comments</h1>
+    <div class="comment">
+        <li>{{comment_count}}comments</li>
+        {% for i in comments %}
+        <li>{{i.text}}</li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
