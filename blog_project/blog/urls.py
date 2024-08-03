@@ -13,6 +13,4 @@ urlpatterns = [
     path('addcomment/<int:post_id>/',views.addcomment,name='addcomment'),
     path('viewcomment/<int:post_id>',views.viewcomment,name='viewcomment'),
 
-    
-
 ]

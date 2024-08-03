@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import Post,Comment
-from .forms import postcreate,postedit,AddComment
+from .forms import postcreate,postedit
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 
 
@@ -16,41 +18,39 @@ def Register(req):
         email=req.POST.get('email')
         password=req.POST.get('password')
 
-        if User.objects.filter(email=email):
-            messages.error(req,"Email Already Exist")
-            return redirect('Register')
-        else:
-            User.objects.create(
+        if password is not None:
+            if User.objects.filter(email=email):
+                messages.error(req,"Email Already Exist")
+                return redirect('Register')
+            else:
+                User.objects.create_user(
                 username=username,
                 email=email,
                 password=password
-            )
-            messages.success(req,"Successfully Registered")
-            return redirect('/')
+                )
+                messages.success(req,"Successfully Registered")
+                return redirect('/')
     else:
         return render(req,'Register.html')
 
-
 def Login(req):
-    if req.method=='POST':
-        username=req.POST.get('username')
-        password=req.POST.get('password')
+    if req.method == 'POST':
+        username = req.POST.get('username')
+        password = req.POST.get('password')
 
-        user=auth.authenticate(username=username,password=password)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
-            auth.login(req,user)
+            login(req, user)
             return redirect('/')
         else:
-            messages.error(req,'Invalid Credential')
-            return redirect('Login')
+            messages.error(req, 'Invalid username or password')
+            return render(req, 'Login.html', {'username': username})
     else:
-        return render(req,'Login.html')    
-
+        return render(req, 'Login.html')
 def logout(req):
     auth.logout(req)
     return redirect('/')
-
 
 def CreatePost(req):
     if req.method=='POST':
@@ -64,11 +64,9 @@ def CreatePost(req):
         else:
             messages.error(req,'invalid form data')
             return render(req,'createpost.html',{'form':form})
-
     else:
         form=postcreate()
         return render(req,'createpost.html',{'form':form})
-
 
 def allpost(req):
     x=req.user
@@ -78,6 +76,7 @@ def allpost(req):
 def deletepost(req,post_id):
     post=Post.objects.get(id=post_id)
     post.delete()
+    messages.error(req,'Deleted Successfully')
     return redirect('allpost')
 
 def editpost(req,post_id):
@@ -92,22 +91,22 @@ def editpost(req,post_id):
 
     return render(req,'EditPost.html',{'form':form ,'post':post})
 
-@login_required
-def addcomment(req,post_id):
-    post=Post.objects.get(id=post_id)
 
-    if req.method=='POST':
-        form=AddComment(req.POST)
-        if form.is_valid():
-            Comment=form.save(commit=False)
-            Comment.post=post
-            Comment.author=req.user
-            Comment.save()
+
+@login_required
+def addcomment(req, post_id):
+    if req.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        text = req.POST.get('text')
+        if text:
+            comment = Comment.objects.create(
+                post=post,
+                author=req.user,
+                text=text
+            )
+            comment.save()
             return redirect('/')
-        
-    else:
-        form=AddComment()
-    return render(req,'AddComment.html',{'form':form,'post':post})
+    return render(req, 'index.html', {'post_id': post_id})
 
 
 def viewcomment(req,post_id):

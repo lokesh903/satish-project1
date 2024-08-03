@@ -6,7 +6,7 @@ class Post(models.Model):
     title=models.CharField(max_length=50)
     content=models.ImageField(upload_to='images/')
     author=models.ForeignKey(User,on_delete=models.CASCADE)
-    published_date=models.DateField()
+    published_date=models.DateField(default=datetime.date.today)
 
 
     def __str__(self):
@@ -20,4 +20,4 @@ class Comment(models.Model):
 
 
     def __str__(self):
-        return self.post
+        return self.post.title

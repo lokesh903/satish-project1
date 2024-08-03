@@ -10,7 +10,8 @@ const openmenu = () => {
     }
 }
 
-const opencomments=()=>{
-    var x=document.getElementById('comments')
-    x.style.display=block;
+function openCommentForm(button) {
+  const commentFormContainer = button.closest('.comment-container').querySelector('.commentx');
+
+  commentFormContainer.classList.toggle('hidden');
 }

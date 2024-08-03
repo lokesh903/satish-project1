@@ -2,6 +2,7 @@
 
 {% block container %}
 <div class="comment">
+    
     <div class="commentform">
         <h2>Add Comment</h2>
         <form action="{% url 'addcomment' post_id=post.id %}" method="POST">
